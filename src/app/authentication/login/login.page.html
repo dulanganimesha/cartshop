@@ -1,0 +1,44 @@
+<ion-header class="ion-no-border">
+    <div class="login-header ion-padding">
+        <img class="logo-img" src="/assets/img/EasyQ_logo1.png">
+    </div>
+</ion-header>
+
+<ion-content class="ion-no- padding">
+    <form class="form ion-padding" [formGroup]="validations_form" (ngSubmit)="loginUser(validations_form.value)">
+        <ion-item transparent class="inputep">
+            <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+            <ion-input type="text" formControlName="email" placeholder="E-mail"></ion-input>
+        </ion-item>
+        <div class="validation-errors" class="inputep">
+            <ng-container *ngFor="let validation of validation_messages.email">
+                <div class="error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+                    {{ validation.message }}
+                </div>
+            </ng-container>
+        </div>
+        <ion-item transparent class="inputep">
+            <ion-icon slot="start" name="lock-closed-outline">"></ion-icon>
+            <ion-input type="password" formControlName="password" placeholder="******"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.password">
+                <div class="error-message" *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+                    {{ validation.message }}
+                </div>
+            </ng-container>
+        </div>
+        <br>
+
+        <ion-button class="submit-btn" shape="round" expand="block" type="submit" [disabled]="!validations_form.valid">Log In</ion-button>
+
+        <label class="error-message">{{errorMessage}}</label>
+
+        <p class="go-to-register">
+            Not account yet? <a (click)="goToRegisterPage()">Create an account.</a>
+        </p>
+    </form>
+
+
+
+</ion-content>

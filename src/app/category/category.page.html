@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>category</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div id="container">
+        <ion-row *ngFor="let list of cat">
+            <ion-col size="8">
+                <ion-button color="secondary" expand="block" shape="round" routerLink="/category" (click)="getlist(list.key)">{{list.key}}</ion-button>
+                <br>
+
+
+            </ion-col>
+            <ion-col size="2"></ion-col>
+        </ion-row>
+    </div>
+</ion-content>
